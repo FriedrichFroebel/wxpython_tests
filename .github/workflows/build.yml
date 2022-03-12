@@ -34,7 +34,6 @@ jobs:
           libtiff-dev
           libnotify-dev
           libsm-dev
-          libwebkitgtk-3.0-0
     - name: download dependencies
       run: |
         pip install -U pip
