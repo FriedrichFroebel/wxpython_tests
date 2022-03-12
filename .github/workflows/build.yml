@@ -9,10 +9,10 @@ jobs:
         include:
         - os: ubuntu-latest
           python: 3.8
-        - os: ubuntu-latest
-          python: 3.9
-        - os: ubuntu-latest
-          python: '3.10'
+        #- os: ubuntu-latest
+        #  python: 3.9
+        #- os: ubuntu-latest
+        #  python: '3.10'
     runs-on: ${{ matrix.os }}
     name: Python ${{ matrix.python }}
     steps:
@@ -24,6 +24,10 @@ jobs:
     - name: apt update
       run:
         sudo apt-get update
+    - name: download dependencies
+      run: |
+        pip install -U pip
+        pip install -U six wheel setuptools
     - name: download source
       run:
         pip download wxPython
