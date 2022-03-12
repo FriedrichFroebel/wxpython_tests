@@ -24,6 +24,10 @@ jobs:
     - name: apt update
       run:
         sudo apt-get update
+    - name: apt dependencies
+      run:
+        sudo apt-get install
+          libgtk-3-dev
     - name: download dependencies
       run: |
         pip install -U pip
