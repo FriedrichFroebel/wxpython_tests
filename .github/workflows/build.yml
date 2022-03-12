@@ -1,0 +1,34 @@
+name: Build
+on:
+- push
+- pull_request
+jobs:
+  main:
+    strategy:
+      matrix:
+        include:
+        - os: ubuntu-latest
+          python: 3.8
+        - os: ubuntu-latest
+          python: 3.9
+        - os: ubuntu-latest
+          python: '3.10'
+    runs-on: ${{ matrix.os }}
+    name: Python ${{ matrix.python }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python }}
+    - name: apt update
+      run:
+        sudo apt-get update
+    - name: download source
+      run:
+        pip download wxPython
+    - run:
+        ls -l
+    - name: run build
+      run:
+        pip wheel -v *.tar.gz
