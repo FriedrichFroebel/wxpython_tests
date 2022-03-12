@@ -46,3 +46,5 @@ jobs:
     - name: run build
       run:
         pip wheel -v *.tar.gz
+    - run:
+        ls -l
